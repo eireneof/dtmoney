@@ -58,8 +58,9 @@ export function NewTransactionModal({
         />
         <input
           type="number"
+          step="any"
           placeholder="Valor"
-          value={value}
+          // value={value}
           onChange={(event) => setValue(Number(event.target.value))}
         />
         <TransactionTypeContainer>
