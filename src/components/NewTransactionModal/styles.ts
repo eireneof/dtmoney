@@ -55,11 +55,16 @@ export const TransactionTypeContainer = styled.div`
   gap: 0.5rem;
 `;
 
-export const RadioBox = styled.button`
+interface RadioBoxProps {
+    isActive: boolean;
+}
+
+export const RadioBox = styled.button<RadioBoxProps>`
   height: 4rem;
   border: 1px solid var(--input-border);
   border-radius: 0.25rem;
-  background: transparent;
+
+  background: ${(props) => props.isActive ? '#eee' : 'transparent'};
 
   display: flex;
   align-items: center;
