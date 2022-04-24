@@ -95,4 +95,15 @@ export const GlobalStyle = createGlobalStyle`
             filter: brightness(0.8);
         }
     }
+
+    input {
+        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &[type=number] {
+            -moz-appearance: textfield;
+        }
+    }
 `;
