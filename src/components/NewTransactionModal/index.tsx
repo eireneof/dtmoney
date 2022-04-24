@@ -14,10 +14,26 @@ export function NewTransactionModal({
   isOpen,
   onRequestClose,
 }: NewTransactionModalProps) {
+  const [title, setTitle] = useState("");
+  const [value, setValue] = useState(0);
+  const [category, setCategory] = useState("");
   const [type, setType] = useState("deposit");
+
+  console.log('teste');
+
   function handleNewTransaction(event: FormEvent) {
     event.preventDefault();
+
+    // console.log('oi :)')
+
+    console.log({
+      title,
+      value, 
+      category,
+      type
+    });
   }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -32,12 +48,21 @@ export function NewTransactionModal({
       >
         <img src={closeImg} alt="Fechar modal" />
       </button>
-      <Container>
+      <Container onSubmit={handleNewTransaction}>
         <h2>Cadastar Transação</h2>
-        <input type="text" placeholder="Título" />
-        <input type="number" placeholder="Valor" />
+        <input
+          type="text"
+          placeholder="Título"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Valor"
+          value={value}
+          onChange={(event) => setValue(Number(event.target.value))}
+        />
         <TransactionTypeContainer>
-
           <RadioBox
             type="button"
             onClick={() => {
@@ -62,8 +87,15 @@ export function NewTransactionModal({
             <span>Saída</span>
           </RadioBox>
         </TransactionTypeContainer>
-        <input type="text" placeholder="Categoria" />
-        <button type="submit" onSubmit={handleNewTransaction}> Cadastrar </button>
+        <input
+          type="text"
+          placeholder="Categoria"
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        />
+        <button type="submit">
+          Cadastrar
+        </button>
       </Container>
     </Modal>
   );
